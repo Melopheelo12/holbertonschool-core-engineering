@@ -1,5 +1,4 @@
 #!/usr/bin/env python 3
-for x in "abcdefghijklmnopqrstuvwxyz":
-    if x != "q" and x != "e":
-        print(x, end="")
-print()
+for letter in range(ord('a'), ord('z') + 1):
+    if char(letter) != 'q' and char(letter) != 'e':
+        print("{}".format(char(letter)), end="")
