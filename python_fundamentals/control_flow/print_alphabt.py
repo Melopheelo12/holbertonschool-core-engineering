@@ -1,4 +1,6 @@
-#!/usr/bin/env python 3
-for letter in range(ord('a'), ord('z') + 1):
-    if chr(letter) != 'q' and chr(letter) != 'e':
-        print("{}".format(chr(letter)), end="")
+#!/usr/bin/env python3
+
+for i in range(97, 123):
+    if chr(i) != 'q' and chr(i) != 'e':
+        print(chr(i), end="")
+print()
