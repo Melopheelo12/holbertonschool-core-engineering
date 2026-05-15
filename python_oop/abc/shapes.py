@@ -1,85 +1,73 @@
 #!/usr/bin/env python3
-"""Module defining an abstract Shape class and concrete shapes.
-
-This module demonstrates the use of abstract base classes, concrete
-subclasses, and duck typing in Python. It defines an abstract ``Shape``
-class with two abstract methods, ``area`` and ``perimeter``, and two
-concrete subclasses, ``Circle`` and ``Rectangle``. It also provides a
-standalone function ``shape_info`` that relies on duck typing to print
-information about any shape-like object.
-"""
+"""Module définissant des formes géométriques et une fonction duck-typed."""
 from abc import ABC, abstractmethod
 import math
 
 
 class Shape(ABC):
-    """Abstract base class representing a geometric shape.
-
-    Subclasses must implement the ``area`` and ``perimeter`` methods.
-    """
+    """Classe abstraite représentant une forme géométrique."""
 
     @abstractmethod
     def area(self):
-        """Compute and return the area of the shape."""
+        """Méthode abstraite : retourne l'aire de la forme."""
         pass
 
     @abstractmethod
     def perimeter(self):
-        """Compute and return the perimeter of the shape."""
+        """Méthode abstraite : retourne le périmètre de la forme."""
         pass
 
 
 class Circle(Shape):
-    """Concrete class representing a circle."""
+    """Classe représentant un cercle."""
 
     def __init__(self, radius):
-        """Initialize a Circle with the given radius.
+        """Initialise un cercle avec son rayon.
 
         Args:
-            radius: The radius of the circle.
+            radius: Le rayon du cercle.
         """
         self.radius = radius
 
     def area(self):
-        """Return the area of the circle."""
+        """Retourne l'aire du cercle."""
         return math.pi * self.radius ** 2
 
     def perimeter(self):
-        """Return the perimeter (circumference) of the circle."""
+        """Retourne le périmètre (circonférence) du cercle."""
         return 2 * math.pi * self.radius
 
 
 class Rectangle(Shape):
-    """Concrete class representing a rectangle."""
+    """Classe représentant un rectangle."""
 
     def __init__(self, width, height):
-        """Initialize a Rectangle with the given width and height.
+        """Initialise un rectangle avec sa largeur et sa hauteur.
 
         Args:
-            width: The width of the rectangle.
-            height: The height of the rectangle.
+            width: La largeur du rectangle.
+            height: La hauteur du rectangle.
         """
         self.width = width
         self.height = height
 
     def area(self):
-        """Return the area of the rectangle."""
+        """Retourne l'aire du rectangle."""
         return self.width * self.height
 
     def perimeter(self):
-        """Return the perimeter of the rectangle."""
+        """Retourne le périmètre du rectangle."""
         return 2 * (self.width + self.height)
 
 
 def shape_info(shape):
-    """Print the area and perimeter of a shape-like object.
+    """Affiche l'aire et le périmètre d'une forme.
 
-    This function uses duck typing: it does not check the type of the
-    argument. It only requires that the object provide ``area`` and
-    ``perimeter`` methods.
+    Cette fonction utilise le duck typing : elle ne vérifie pas le type
+    de l'objet, elle appelle simplement les méthodes attendues.
 
     Args:
-        shape: Any object exposing ``area()`` and ``perimeter()`` methods.
+        shape: Tout objet qui possède les méthodes area() et perimeter().
     """
     print("Area: {}".format(shape.area()))
     print("Perimeter: {}".format(shape.perimeter()))
