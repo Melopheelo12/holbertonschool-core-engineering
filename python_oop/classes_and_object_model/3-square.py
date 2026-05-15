@@ -1,11 +1,30 @@
 #!/usr/bin/env python3
+"""Module définissant une classe Square avec une méthode area."""
+
+
 class Square:
+    """Classe représentant un carré défini par sa taille."""
+
     def __init__(self, size=0):
-        if not insistance(size, int):
-            raise TypeError("Size must be an integer")
+        """Initialise un carré avec sa taille, après validation.
+
+        Args:
+            size: La taille du carré (entier positif ou nul, 0 par défaut).
+
+        Raises:
+            TypeError: Si size n'est pas un entier.
+            ValueError: Si size est strictement négatif.
+        """
+        if type(size) is not int:
+            raise TypeError("size must be an integer")
         if size < 0:
-            raise ValueError("Size must be > 0")
+            raise ValueError("size must be >= 0")
         self.__size = size
 
     def area(self):
-        return self.__size * self.__size
+        """Retourne l'aire du carré.
+
+        Returns:
+            L'aire du carré (size au carré).
+        """
+        return self.__size ** 2
