@@ -1,56 +1,28 @@
 #!/usr/bin/env python3
-"""Module définissant Shape, Circle, Rectangle et shape_info."""
-
+"""Module définissant une classe abstraite Animal et ses sous-classes."""
 from abc import ABC, abstractmethod
-import math
 
 
-class Shape(ABC):
-    """Classe abstraite représentant une forme géométrique."""
-
-    @abstractmethod
-    def area(self) -> float:
-        """Retourne l'aire de la forme."""
-        raise NotImplementedError
+class Animal(ABC):
+    """Classe abstraite représentant un animal."""
 
     @abstractmethod
-    def perimeter(self) -> float:
-        """Retourne le périmètre de la forme."""
-        raise NotImplementedError
+    def sound(self):
+        """Méthode abstraite : retourne le son produit par l'animal."""
+        pass
 
 
-class Circle(Shape):
-    """Classe représentant un cercle."""
+class Dog(Animal):
+    """Classe représentant un chien."""
 
-    def __init__(self, radius: float):
-        self.radius = radius
-
-    def area(self) -> float:
-        return math.pi * self.radius ** 2
-
-    def perimeter(self) -> float:
-        return 2 * math.pi * self.radius
+    def sound(self):
+        """Retourne le son produit par un chien."""
+        return "Bark"
 
 
-class Rectangle(Shape):
-    """Classe représentant un rectangle."""
+class Cat(Animal):
+    """Classe représentant un chat."""
 
-    def __init__(self, width: float, height: float):
-        self.width = width
-        self.height = height
-
-    def area(self) -> float:
-        return self.width * self.height
-
-    def perimeter(self) -> float:
-        return 2 * (self.width + self.height)
-
-
-def shape_info(shape):
-    """
-    Affiche l'aire et le périmètre d'une forme.
-
-    Utilise le duck typing (aucun isinstance).
-    """
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+    def sound(self):
+        """Retourne le son produit par un chat."""
+        return "Meow"
