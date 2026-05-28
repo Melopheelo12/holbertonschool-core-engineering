@@ -1,16 +1,12 @@
 #!/usr/bin/env python3
-"""Module that defines a function to write a string to a text file."""
+"""Module that reads a UTF8 text file and prints its content."""
 
 
-def write_file(filename="", text=""):
-    """Write a string to a text file (UTF-8).
+def read_file(filename=""):
+    """Read a UTF8 text file and print its content to stdout.
 
     Args:
-        filename: the name of the file to write to.
-        text: the string to write.
-
-    Returns:
-        The number of characters written.
+        filename (str): The path to the file to read. Defaults to "".
     """
-    with open(filename, "w", encoding="utf-8") as f:
-        return f.write(text)
+    with open(filename, encoding="utf-8") as f:
+        print(f.read(), end="")
