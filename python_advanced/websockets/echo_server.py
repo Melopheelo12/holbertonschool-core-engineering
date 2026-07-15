@@ -3,8 +3,10 @@
 import asyncio
 import websockets
 
+
 async def connection_handler(websocket):
     ...
+
 
 async def main():
     ...
